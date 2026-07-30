@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.api.v1.endpoints import auth, users
+from app.api.v1.endpoints import auth, users, shelters
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -20,8 +20,10 @@ if settings.BACKEND_CORS_ORIGINS:
 
 app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/auth", tags=["auth"])
 app.include_router(users.router, prefix=f"{settings.API_V1_STR}/users", tags=["users"])
+app.include_router(shelters.router, prefix=f"{settings.API_V1_STR}/shelters", tags=["shelters"])
 
 @app.get("/")
 def read_root():
     return {"message": "Welcome to SafeHarbor AI API"}
+
 

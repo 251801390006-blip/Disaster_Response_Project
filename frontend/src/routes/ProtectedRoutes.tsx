@@ -20,3 +20,6 @@ export const ProtectedRoute = ({ allowedRoles }: Props) => {
   return <Outlet />;
 };
 
+
+// Add your Route definitions in App.tsx using this ProtectedRoute wrapper.
+
