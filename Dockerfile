@@ -8,12 +8,12 @@ RUN apt-get update \
     && apt-get install -y gcc libpq-dev gdal-bin \
     && apt-get clean
 
-# Install Python dependencies
-COPY requirements.txt .
+# Install Python dependencies from the backend folder
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
-COPY . .
+# Copy the entire backend source code into the working directory
+COPY backend/ .
 
 # Expose port (Documentation purposes, Railway maps to $PORT dynamically)
 EXPOSE 8000
