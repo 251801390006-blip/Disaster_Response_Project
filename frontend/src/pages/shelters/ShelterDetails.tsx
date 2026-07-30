@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { LeafletMap } from "../../components/Map/LeafletMap";
 import { shelterApi } from "../../api/shelterApi";
 
 export const ShelterDetails = () => {
@@ -29,7 +30,17 @@ export const ShelterDetails = () => {
           <div><p className="text-gray-500">Available</p><p className="text-2xl text-green-600">{shelter.available_capacity}</p></div>
         </div>
       </div>
+      
+      <div className="bg-white p-6 rounded shadow mb-6">
+        <h2 className="text-xl font-semibold mb-4">Location</h2>
+        <LeafletMap 
+          height="300px" 
+          center={[shelter.latitude, shelter.longitude]} 
+          markers={[{ id: shelter.id, latitude: shelter.latitude, longitude: shelter.longitude, title: shelter.name, type: "shelter" }]} 
+        />
+      </div>
       {/* Cloudinary Gallery Placeholder */}
+    
       <div className="bg-white p-6 rounded shadow">
         <h2 className="text-xl font-semibold mb-4">Gallery</h2>
         <div className="grid grid-cols-4 gap-4">
@@ -41,4 +52,5 @@ export const ShelterDetails = () => {
     </div>
   );
 };
+
 
