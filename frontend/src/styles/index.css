@@ -1,0 +1,23 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 10 90 160;
+    --color-secondary: 20 180 180;
+    --color-background: 250 250 250;
+    --color-surface: 255 255 255;
+    --color-text: 30 40 50;
+  }
+  .dark {
+    --color-background: 15 20 30;
+    --color-surface: 30 40 50;
+    --color-text: 240 240 240;
+  }
+}
+body {
+  @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-text))] antialiased;
+}
+
